@@ -18,6 +18,7 @@ export default function Home({ data }) {
             {data.map((item) => (
               <BlogItem
                 key={item.id}
+                id={item.id}
                 title={item.title}
                 userId={item.user_id}
                 body={item.body}

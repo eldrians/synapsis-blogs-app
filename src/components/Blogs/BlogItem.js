@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import image1 from "/public/images/articles/pagination component in reactjs.jpg";
+import image1 from "/public/images/articles/example.jpg";
 
 const FramerImage = motion(Image);
 
-const BlogItem = ({ title, userId, body }) => {
+const BlogItem = ({ id, title, userId, body }) => {
   return (
     <li className="relative col-span-1 w-full p-4 bg-light border border-solid border-dark rounded-2xl">
       <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark" />
@@ -25,7 +25,7 @@ const BlogItem = ({ title, userId, body }) => {
           transition={{ duration: 0.2 }}
         />
       </Link>
-      <Link href="/" target="_blank">
+      <Link href={`/detail/${id}`}>
         <h2 className="capitalize text-2xl font-bold my-2 hover:underline">
           {title}
         </h2>
