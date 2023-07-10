@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Link from "next/link";
 import React from "react";
 
 const profile = ({ data }) => {
@@ -11,6 +12,10 @@ const profile = ({ data }) => {
           <p>{data.email}</p>
           <p>{data.gender}</p>
           <p>{data.status}</p>
+          <Link href={`/profile/form/create/${data.id}`}
+          className="py-2 px-4 bg-dark rounded-lg text-light font-base text-sm">
+            Make Post
+          </Link>
         </div>
       </Layout>
     </>
