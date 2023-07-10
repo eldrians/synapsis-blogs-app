@@ -12,8 +12,17 @@ export default DetailComment;
 
 export const getStaticProps = async ({ name }) => {
   try {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+    };
+
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${name}/comments`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${name}/comments`,
+      {
+        method: "GET",
+        headers: headers,
+      }
     );
     if (res.ok) {
       const data = await res.json();

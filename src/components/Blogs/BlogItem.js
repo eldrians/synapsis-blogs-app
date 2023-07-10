@@ -8,8 +8,8 @@ const FramerImage = motion(Image);
 
 const BlogItem = ({ id, title, userId, body }) => {
   return (
-    <li className="relative col-span-1 w-full p-4 bg-light border border-solid border-dark rounded-2xl">
-      <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark" />
+    <li className="relative col-span-1 w-full p-4 bg-light dark:bg-dark border border-solid border-dark dark:border-light rounded-2xl">
+      <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark dark:bg-light" />
       <Link
         href="/"
         target="_blank"
@@ -26,12 +26,14 @@ const BlogItem = ({ id, title, userId, body }) => {
         />
       </Link>
       <Link href={`/detail/${id}`}>
-        <h2 className="capitalize text-2xl font-bold my-2 hover:underline">
+        <h2 className="capitalize text-2xl font-bold my-2 hover:underline dark:text-light">
           {title}
         </h2>
       </Link>
-      <p className="text-sm mb-2">{body}</p>
-      <span className="text-primary font-semibold">{userId}</span>
+      <p className="text-sm mb-2 dark:text-light">{body}</p>
+      <span className="text-primary dark:text-primaryDark font-semibold">
+        {userId}
+      </span>
     </li>
   );
 };

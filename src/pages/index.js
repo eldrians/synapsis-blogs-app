@@ -33,7 +33,14 @@ export default function Home({ data }) {
 
 export const getStaticProps = async () => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+    };
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, {
+      method: "GET",
+      headers: headers,
+    });
     if (res.ok) {
       const data = await res.json();
       return {
