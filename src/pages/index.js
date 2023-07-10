@@ -2,37 +2,9 @@ import React, { useState, useEffect } from "react";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import Head from "next/head";
-import article1 from "../../public/images/articles/pagination component in reactjs.jpg";
-import ItemBlog from "@/components/Blogs/BlogItem";
-import TestAPI2 from "@/components/TestAPI";
+import BlogItem from "@/components/Blogs/BlogItem";
 
-export default function Home() {
-  const [postsData, setPostsData] = useState([]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/posts`,
-        {
-          method: "GET",
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setPostsData(data);
-      } else {
-        console.error("Error:", response.status);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
+export default function Home({ data }) {
   return (
     <>
       <Head>
@@ -43,14 +15,12 @@ export default function Home() {
         <Layout className="pt-16">
           <AnimatedText text="Find Blog!" className="mb-16" />
           <ul className="grid grid-cols-2 gap-16">
-            {postsData.map((item) => (
-              <ItemBlog
+            {data.map((item) => (
+              <BlogItem
                 key={item.id}
-                userId={item.user_id}
                 title={item.title}
+                userId={item.user_id}
                 body={item.body}
-                link="/"
-                img={article1}
               />
             ))}
           </ul>
@@ -59,3 +29,25 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
+    if (res.ok) {
+      const data = await res.json();
+      return {
+        props: { data },
+      };
+    } else {
+      console.error("Error:", res.status);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+
+  return {
+    props: {
+      data: [],
+    },
+  };
+};
