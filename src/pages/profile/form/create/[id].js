@@ -110,7 +110,7 @@ const CreateBlog = () => {
                   autoComplete="body"
                   required
                   className="w-full py-2 px-3 border border-dark placeholder-dark
-                      text-dark/30 rounded-md bg-light focus:outline-none focus:ring-light-purple focus:border-light-purple text-md
+                      text-dark rounded-md bg-light focus:outline-none focus:ring-light-purple focus:border-light-purple text-md
                       shadow-md"
                   placeholder="insert content"
                   rows="3"
