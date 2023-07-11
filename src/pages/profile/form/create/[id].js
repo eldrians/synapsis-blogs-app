@@ -1,8 +1,10 @@
-import React, { useState, useRouter } from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 
 const CreateBlog = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     title: "",
     user_id: "",
@@ -34,6 +36,7 @@ const CreateBlog = () => {
         body: JSON.stringify(postData),
       });
       console.log(res);
+      router.push(`/profile/${postData.user_id}`);
     } catch (error) {
       console.error(error);
       console.log("gagal");

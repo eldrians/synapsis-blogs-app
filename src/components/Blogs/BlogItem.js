@@ -3,10 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import image1 from "/public/images/articles/example.jpg";
+import { useRouter } from "next/router";
 
 const FramerImage = motion(Image);
 
 const BlogItem = ({ data, inProfile = false }) => {
+  const router = useRouter();
   const handleDelete = async (id) => {
     try {
       const headers = {
@@ -22,9 +24,8 @@ const BlogItem = ({ data, inProfile = false }) => {
       );
 
       if (response.ok) {
-        // Item deleted successfully
-        // You can redirect to another page or perform any other action
-        // router.push("/");
+        const data = await response.json()
+        router.push(`/profile/${data.user_id}`);
       } else {
         // Handle error or show appropriate message
       }
@@ -57,7 +58,7 @@ const BlogItem = ({ data, inProfile = false }) => {
       </Link>
       <p className="text-sm mb-2 dark:text-light">{data.body}</p>
       <span className="text-primary dark:text-primaryDark font-semibold">
-        {data.userId}
+        {data.user_id}
       </span>
       {inProfile ? (
         <div className="w-full flex flex-row space-x-2">
