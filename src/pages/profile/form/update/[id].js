@@ -1,20 +1,52 @@
-import React, { useState, useRouter } from "react";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-const CreateBlog = () => {
+const UpdateBlog = () => {
   const [formData, setFormData] = useState({
     title: "",
     user_id: "",
     body: "",
   });
+  const router = useRouter();
+  const { id } = router.query;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+        };
+
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${id}`,
+          {
+            method: "GET",
+            headers: headers,
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setFormData(data);
+        } else {
+          console.error("Error:", response.status);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchData();
+  }, [id]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (event) => {
-    console.log("hai ini handleSubmit");
+  const handleUpdate = async (event) => {
+    console.log("hai ini handleUpdate");
     event.preventDefault();
     try {
       const postData = {
@@ -28,11 +60,14 @@ const CreateBlog = () => {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
       };
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(postData),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${id}`,
+        {
+          method: "PUT",
+          headers: headers,
+          body: JSON.stringify(postData),
+        }
+      );
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -42,9 +77,10 @@ const CreateBlog = () => {
 
   return (
     <>
-      <AnimatedText text="Create Your Own Blog!" className="text-6xl" />
+      <AnimatedText text="Update Your Own Blog!" className="text-6xl" />
       <Layout>
-        <form onSubmit={handleSubmit}>
+        <div>{id}</div>
+        <form onSubmit={handleUpdate}>
           <div>
             <label>Title</label>
             <input
@@ -92,7 +128,7 @@ const CreateBlog = () => {
             className="py-2 px-4 text-sm text-dark rounded-md bg-light-purple
                     flex flex-row justify-center items-center gap-2 uppercase font-semibold"
           >
-            Tambah
+            update
           </button>
         </form>
       </Layout>
@@ -100,4 +136,4 @@ const CreateBlog = () => {
   );
 };
 
-export default CreateBlog;
+export default UpdateBlog;

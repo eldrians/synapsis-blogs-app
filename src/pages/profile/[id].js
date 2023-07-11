@@ -1,3 +1,5 @@
+import AboutUser from "@/components/Profile/AboutUser";
+import UserPosts from "@/components/Profile/UserPosts";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import React from "react";
@@ -6,17 +8,24 @@ const profile = ({ data }) => {
   return (
     <>
       <Layout>
-        <div>
-          <p>{data.id}</p>
-          <p>{data.name}</p>
-          <p>{data.email}</p>
-          <p>{data.gender}</p>
-          <p>{data.status}</p>
-          <Link href={`/profile/form/create/${data.id}`}
-          className="py-2 px-4 bg-dark rounded-lg text-light font-base text-sm">
-            Make Post
-          </Link>
+        <AboutUser data={data} />
+        <div className="flex flex-col space-y-6 justify-center items-center my-12 border bg-dark/10 rounded-sm shadow py-16">
+          <div className="w-5/6">
+            <h1 className="text-start mt-4 mb-4 text-3xl font-semibold text-dark">
+              User Blog Post
+            </h1>
+            <div className="my-6">
+              <Link
+                href={`/profile/form/create/${data.id}`}
+                className="py-2 px-4 bg-dark rounded-lg text-light font-base text-sm"
+              >
+                Make Post
+              </Link>
+            </div>
+            <UserPosts idUser={data.id} />
+          </div>
         </div>
+        <div></div>
       </Layout>
     </>
   );

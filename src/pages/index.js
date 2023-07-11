@@ -16,13 +16,7 @@ export default function Home({ data }) {
           <AnimatedText text="Find Blog!" className="mb-16" />
           <ul className="grid grid-cols-2 gap-16">
             {data.map((item) => (
-              <BlogItem
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                userId={item.user_id}
-                body={item.body}
-              />
+              <BlogItem key={item.id} data={item} />
             ))}
           </ul>
         </Layout>

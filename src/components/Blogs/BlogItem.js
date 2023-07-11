@@ -6,9 +6,34 @@ import image1 from "/public/images/articles/example.jpg";
 
 const FramerImage = motion(Image);
 
-const BlogItem = ({ id, title, userId, body }) => {
+const BlogItem = ({ data, inProfile = false }) => {
+  const handleDelete = async (id) => {
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      };
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${id}`,
+        {
+          method: "DELETE",
+          headers: headers,
+        }
+      );
+
+      if (response.ok) {
+        // Item deleted successfully
+        // You can redirect to another page or perform any other action
+        // router.push("/");
+      } else {
+        // Handle error or show appropriate message
+      }
+    } catch (error) {
+      // Handle error or show appropriate message
+    }
+  };
   return (
-    <li className="relative col-span-1 w-full p-4 bg-light dark:bg-dark border border-solid border-dark dark:border-light rounded-2xl">
+    <li className="relative col-span-1 w-full h-full p-4 bg-light dark:bg-dark border border-solid border-dark dark:border-light rounded-2xl">
       <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark dark:bg-light" />
       <Link
         href="/"
@@ -17,7 +42,7 @@ const BlogItem = ({ id, title, userId, body }) => {
       >
         <FramerImage
           src={image1}
-          alt={title}
+          alt={data.title}
           className="w-full h-auto"
           whileHover={{
             scale: 1.05,
@@ -25,15 +50,34 @@ const BlogItem = ({ id, title, userId, body }) => {
           transition={{ duration: 0.2 }}
         />
       </Link>
-      <Link href={`/detail/${id}`}>
+      <Link href={`/detail/${data.id}`}>
         <h2 className="capitalize text-2xl font-bold my-2 hover:underline dark:text-light">
-          {title}
+          {data.title}
         </h2>
       </Link>
-      <p className="text-sm mb-2 dark:text-light">{body}</p>
+      <p className="text-sm mb-2 dark:text-light">{data.body}</p>
       <span className="text-primary dark:text-primaryDark font-semibold">
-        {userId}
+        {data.userId}
       </span>
+      {inProfile ? (
+        <div className="w-full flex flex-row space-x-2">
+          <Link
+            href={`/profile/form/update/${data.id}`}
+            className="py-2 px-4 bg-dark rounded-lg text-light font-base text-sm"
+          >
+            update Post
+          </Link>
+          <button
+            onClick={() => handleDelete(data.id)}
+            className="text-slate-100 py-1 px-3 rounded-md text-slate-70 text-xs bg-red-600
+                      flex flex-row justify-center items-center gap-1"
+          >
+            Delete
+          </button>
+        </div>
+      ) : (
+        <div>no in profile</div>
+      )}
     </li>
   );
 };

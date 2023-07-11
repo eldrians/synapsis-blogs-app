@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import exampleImage from "/public/images/articles/example.jpg";
@@ -8,14 +7,6 @@ import Link from "next/link";
 import DetailComment from "@/components/Details/DetailComment";
 
 const index = ({ data, dataComment, dataUser }) => {
-  const router = useRouter();
-  // const dataUser = {
-  //   id: 123,
-  //   name: "Axel Eldrian Hadiwibowo",
-  //   email: "axel@gmail.com",
-  //   gender: "male",
-  //   status: "active",
-  // };
   return (
     <>
       <Layout>
@@ -57,13 +48,14 @@ const index = ({ data, dataComment, dataUser }) => {
             {data.body}
           </div>
         </div>
-        {dataComment.map((comment, index) => (
-          <div key={comment.id}>
-            <p className="text-dark">{comment.name}</p>
-            <p className="text-dark">{comment.email}</p>
-            <p className="text-dark">{comment.body}</p>
+        <div className="flex flex-col space-y-6 justify-center items-center my-12 border bg-dark/10 rounded-sm shadow py-16">
+          <div className="w-5/6">
+            <h1 className="text-start mt-4 text-3xl font-semibold text-dark">Comments</h1>
           </div>
-        ))}
+          {dataComment.map((comment) => (
+            <DetailComment key={comment.id} data={comment} />
+          ))}
+        </div>
       </Layout>
     </>
   );

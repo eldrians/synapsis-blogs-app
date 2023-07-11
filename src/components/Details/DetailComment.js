@@ -1,44 +1,19 @@
+import Link from "next/link";
 import React from "react";
 
-const DetailComment = ({ name }) => {
+const DetailComment = ({ data }) => {
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className="w-5/6 bg-light/80 p-8 cursor pointer text-dark dark:text-light shadow-xl">
+      <h1 className="text-xs uppercase font-bold ">{data.name} <span className="font-thin text-[10px]">says...</span></h1>
+      <h5 className="text-xs my-1 hover:underline hover:underline-offset-2">{data.email}</h5>
+      <p className="text-sm text-justify mt-4 mb-2">{data.body} Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero doloribus est, pariatur consequuntur temporibus nihil eligendi sint earum id. Nobis, voluptates autem enim fugit voluptas culpa ratione amet inventore non sunt nostrum suscipit quasi aperiam unde, dolore, aliquam eius doloremque. Sequi quo itaque molestiae tenetur eveniet, facilis eos dolorum? Delectus.</p>
+      <Link
+      href="/"
+      className="text-xs text-red-500">
+        | reply
+      </Link>
     </div>
   );
 };
 
 export default DetailComment;
-
-export const getStaticProps = async ({ name }) => {
-  try {
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-    };
-
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${name}/comments`,
-      {
-        method: "GET",
-        headers: headers,
-      }
-    );
-    if (res.ok) {
-      const data = await res.json();
-      return {
-        props: { data },
-      };
-    } else {
-      console.error("Error:", res.status);
-    }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-
-  return {
-    props: {
-      data: [],
-    },
-  };
-};
