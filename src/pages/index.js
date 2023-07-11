@@ -12,6 +12,7 @@ import { PrevIcon, NextIcon } from "../components/Icons";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [pageNumberLimit, setPageNumberLimit] = useState(3);
@@ -160,18 +161,35 @@ export default function Home() {
 
           <AnimatedText
             text="Our Blog!"
-            className="mb-8 mt-12 text-6xl text-center
+            className="mb-4 mt-12 text-6xl text-center
             sm:text-3xl
             lg:text-4xl"
           />
+
+          <div className="w-2/6 sm:w-full lg:w-2/6 mb-4">
+            <label className="text-sm mb-2 font-semibold ml-2 sm:ml-0 lg:ml-1">Search Title</label>
+            <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-light border border-dark overflow-hidden px-4">
+              <input
+                className="peer h-full w-full outline-none text-sm text-dark bg-light "
+                type="text"
+                id="search"
+                placeholder="Search title.."
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+              />
+            </div>
+          </div>
           <ul
             className="grid grid-cols-2 gap-16
           sm:grid-cols-1 sm:gap-10
           lg:grid-cols-2 lg:gap-10"
           >
-            {currentItems.map((item) => (
-              <BlogItem key={item.id} data={item} />
-            ))}
+            {currentItems
+              .filter((post) => post.title.toLowerCase().includes(query))
+              .map((item) => (
+                <BlogItem key={item.id} data={item} />
+              ))}
           </ul>
           <div className="w-full flex flex-col space-y-5 items-center justify-center mt-20 ">
             <button
