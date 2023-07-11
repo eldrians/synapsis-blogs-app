@@ -56,7 +56,7 @@ const BlogItem = ({ data, inProfile = false }) => {
           {data.title}
         </h2>
       </Link>
-      <p className="text-sm mb-2 dark:text-light">{data.body}</p>
+      <p className="text-sm mb-2 dark:text-light truncate">{data.body}</p>
       <span className="text-primary dark:text-primaryDark font-semibold">
         {data.user_id}
       </span>
@@ -77,7 +77,7 @@ const BlogItem = ({ data, inProfile = false }) => {
           </button>
         </div>
       ) : (
-        <div>no in profile</div>
+        null
       )}
     </li>
   );

@@ -480,3 +480,30 @@ export const LinkArrow = ({ className, ...rest }) => (
     />
   </svg>
 );
+
+export const PrevIcon = ({ className, ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    transform="rotate(180)"
+    viewBox="-8.5 0 32 32"
+    className={`h-auto ${className} text-pink-400`}
+    {...rest}
+  >
+    <title>{"next"}</title>
+    <path d="M0 24.781V7.187L15.281 16z" />
+  </svg>
+);
+
+export const NextIcon = ({ className, ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={800}
+    height={800}
+    viewBox="-8.5 0 32 32"
+    className={`h-auto ${className}`}
+    {...rest}
+  >
+    <title>{"next"}</title>
+    <path d="M0 24.781V7.187L15.281 16z" />
+  </svg>
+);
