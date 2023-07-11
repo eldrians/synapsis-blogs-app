@@ -178,15 +178,3 @@ export const getStaticProps = async (context) => {
   };
 };
 
-// import React from 'react'
-
-// const Detail = () => {
-//   return (
-//     <div>
-//       hai
-//     </div>
-//   )
-// }
-
-// export default Detail
-

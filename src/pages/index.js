@@ -167,7 +167,9 @@ export default function Home() {
           />
 
           <div className="w-2/6 sm:w-full lg:w-2/6 mb-4">
-            <label className="text-sm mb-2 font-semibold ml-2 sm:ml-0 lg:ml-1">Search Title</label>
+            <label className="text-sm mb-2 font-semibold ml-2 sm:ml-0 lg:ml-1">
+              Search Title
+            </label>
             <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-light border border-dark overflow-hidden px-4">
               <input
                 className="peer h-full w-full outline-none text-sm text-dark bg-light "

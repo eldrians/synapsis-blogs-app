@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
+import Link from "next/link";
+import { PrevIcon } from "@/components/Icons";
 
 const CreateBlog = () => {
   const router = useRouter();
@@ -52,6 +54,19 @@ const CreateBlog = () => {
       lg:text-5xl lg:mt-12"
       />
       <Layout>
+        <div className="w-full flex justify-center mb-4">
+          <div className="w-5/6">
+            <button
+              onClick={() => {
+                router.back();
+              }}
+              className="flex flex-row items-center text-base text-dark/80 dark:text-light/80 lg:text-sm"
+            >
+              <PrevIcon className={`w-[25px]`} />
+              Back
+            </button>
+          </div>
+        </div>
         <form
           onSubmit={handleSubmit}
           className="w-full flex flex-col items-center"
@@ -63,7 +78,7 @@ const CreateBlog = () => {
           >
             <div>
               <div className="mb-2">
-                <label className="text-xl font-semibold ml-1">Title</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">Title</label>
               </div>
               <div className="w-full rounded-md bg-light border border-dark py-2 px-4">
                 <input
@@ -81,7 +96,7 @@ const CreateBlog = () => {
             </div>
             <div>
               <div className="mb-2">
-                <label className="text-xl font-semibold ml-1">User</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">User</label>
               </div>
               <div className="w-full rounded-md bg-light border border-dark py-2 px-4">
                 <input
@@ -99,7 +114,7 @@ const CreateBlog = () => {
             </div>
             <div>
               <div className="mb-2">
-                <label className="text-xl font-semibold ml-1">Body</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">Body</label>
               </div>
               <div className="w-full rounded-md bg-light">
                 <textarea
@@ -121,7 +136,7 @@ const CreateBlog = () => {
 
           <button
             type="submit"
-            className="w-fit mt-4 py-2 px-4 bg-dark rounded-lg text-light font-base text-sm"
+            className="w-fit mt-4 py-2 px-4 bg-dark dark:bg-light rounded-lg text-light dark:text-dark font-base text-sm"
           >
             Tambah
           </button>
