@@ -106,6 +106,7 @@ export default function Home() {
             className="mb-16 text-8xl text-left 
             sm:mb-10 sm:text-5xl
             lg:mb-8 lg:text-7xl"
+            alt="image"
           />
 
           <Link
@@ -124,7 +125,7 @@ export default function Home() {
               <Image
                 src={image1}
                 className="w-full h-auto rounded-lg shadow-xl"
-                alt={posts.length >= 1 && posts[0].title}
+                alt="image"
               />
             </div>
             <div
@@ -210,32 +211,3 @@ export default function Home() {
     </>
   );
 }
-
-// export const getStaticProps = async () => {
-//   try {
-//     const headers = {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-//     };
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, {
-//       method: "GET",
-//       headers: headers,
-//     });
-//     if (res.ok) {
-//       const data = await res.json();
-//       return {
-//         props: { data },
-//       };
-//     } else {
-//       console.error("Error:", res.status);
-//     }
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-
-//   return {
-//     props: {
-//       data: [],
-//     },
-//   };
-// };
