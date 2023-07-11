@@ -77,7 +77,12 @@ const UpdateBlog = () => {
 
   return (
     <>
-      <AnimatedText text="Update Your Own Blog!" className="text-6xl" />
+      <AnimatedText
+        text="Update Your Blog!"
+        className="text-center text-6xl mt-16
+      sm:text-2xl sm:mt-8
+      lg:text-5xl lg:mt-12"
+      />
       <Layout>
         <div>{id}</div>
         <form onSubmit={handleUpdate}>
