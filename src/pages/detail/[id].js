@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import exampleImage from "/public/images/articles/example.jpg";
@@ -6,6 +6,8 @@ import exampleProfilePicture from "/public/images/profile/exampleProfilePicture.
 import Link from "next/link";
 import DetailComment from "@/components/Details/DetailComment";
 import AnimatedText from "@/components/AnimatedText";
+import { PrevIcon } from "@/components/Icons";
+import { GetCommentPost, GetPosts, GetPostsById } from "@/libs/postsAPI";
 
 const index = ({ data, dataComment, dataUser }) => {
   return (
@@ -15,6 +17,13 @@ const index = ({ data, dataComment, dataUser }) => {
       sm:w-full
       lg:w-5/6"
       >
+        <Link
+          href="/"
+          className="flex flex-row items-center text-base text-dark/80 dark:text-light/80 pb-6 lg:text-sm"
+        >
+          <PrevIcon className={`w-[25px]`} />
+          Back
+        </Link>
         <div className="w-full flex flex-col justify-center items-center">
           <Image
             src={exampleImage}
@@ -47,7 +56,7 @@ const index = ({ data, dataComment, dataUser }) => {
                 lg:text-sm
                 sm:text-xs"
                 >
-                  {dataUser.name}
+                  {dataUser.name}aa
                 </p>
               </Link>
             </div>
@@ -122,22 +131,18 @@ const index = ({ data, dataComment, dataUser }) => {
 
 export default index;
 
-export const getStaticPaths = async () => {
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-  };
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, {
-    method: "GET",
-    headers: headers,
-  });
-  const data = await res.json();
-
-  const paths = data.map((item) => {
+async function fetchPaths() {
+  const fetchedPosts = await GetPosts();
+  const paths = fetchedPosts.map((item) => {
     return {
       params: { id: item.id.toString() },
     };
   });
+  return paths;
+}
+
+export const getStaticPaths = async () => {
+  const paths = await fetchPaths();
   return {
     paths,
     fallback: false,
@@ -147,25 +152,14 @@ export const getStaticPaths = async () => {
 // get detail blog
 export const getStaticProps = async (context) => {
   const id = context.params.id;
+  const data = await GetPostsById({ id });
+  const dataComment = await GetCommentPost({ id });
+
+  console.log(data);
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
   };
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/${id}`, {
-    method: "GET",
-    headers: headers,
-  });
-  const data = await res.json();
-
-  const resComment = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${id}/comments`,
-    {
-      method: "GET",
-      headers: headers,
-    }
-  );
-  const dataComment = await resComment.json();
-
   const resUser = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/users/${data.user_id}`,
     {

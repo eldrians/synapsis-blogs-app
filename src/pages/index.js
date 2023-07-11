@@ -5,7 +5,7 @@ import Head from "next/head";
 import BlogItem from "@/components/Blogs/BlogItem";
 import image1 from "/public/images/articles/example.jpg";
 import Image from "next/image";
-import { GetPosts } from "@/libs/userAPI";
+import { GetPosts } from "@/libs/postsAPI";
 import Link from "next/link";
 
 import { PrevIcon, NextIcon } from "../components/Icons";
