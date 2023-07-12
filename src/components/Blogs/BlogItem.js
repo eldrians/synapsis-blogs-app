@@ -63,7 +63,7 @@ const BlogItem = ({ data, inProfile = false }) => {
       {inProfile ? (
         <div className="w-full flex flex-row space-x-2">
           <Link
-            href={`/profile/form/update/${data.id}`}
+            href={`/profile/form/updatePost/${data.id}`}
             className="py-2 px-4 bg-dark rounded-lg text-light font-base text-sm"
           >
             update Post

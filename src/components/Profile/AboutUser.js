@@ -56,7 +56,7 @@ const AboutUser = ({ data }) => {
           </div>
           <div className="relative w-1/2 sm:w-full flex flex-col items-start justify-center pl-10 md:order-1">
             <Link
-              href="/"
+              href={`/profile/form/updateProfile/${data.id}`}
               className="absolute top-0 right-0 m-8 bg-blue-800 py-2 px-3 text-xs rounded-md shadow text-light"
             >
               Edit
