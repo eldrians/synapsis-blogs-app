@@ -6,6 +6,7 @@ import BlogItem from "@/components/Blogs/BlogItem";
 import image1 from "/public/images/articles/example.jpg";
 import Image from "next/image";
 import { GetPosts } from "@/libs/postsAPI";
+import { GetUsersById } from "@/libs/usersAPI";
 import Link from "next/link";
 
 import { PrevIcon, NextIcon } from "../components/Icons";
@@ -134,13 +135,16 @@ export default function Home() {
             sm:w-full sm:py-4 sm:px-1 sm:space-y-1
             lg:w-full lg:py-10 lg:px-4 lg:space-y-3"
             >
-              <p
+              {/* <p
                 className="text-primary dark:text-primaryDark px-4 text-sm
               sm:px-1 sm:text-xs
               lg:px-2"
               >
-                {posts.length >= 1 && posts[0].user_id}
-              </p>
+                {
+                // GetUsersById(posts.length >= 1 && posts[0].user_id)
+                posts.length >= 1 && posts[0].user_id
+                }
+              </p> */}
               <h3
                 className="text-7xl inline-block font-bold capitalize
               text-dark dark:text-light hover:underline hover:underline-offset-3

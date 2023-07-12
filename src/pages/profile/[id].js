@@ -74,15 +74,3 @@ export const getStaticProps = async (context) => {
   };
 };
 
-// import React from 'react'
-
-// const Profile = () => {
-//   return (
-//     <div>
-//       hai
-//     </div>
-//   )
-// }
-
-// export default Profile
-

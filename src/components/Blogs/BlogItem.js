@@ -24,7 +24,7 @@ const BlogItem = ({ data, inProfile = false }) => {
       );
 
       if (response.ok) {
-        const data = await response.json()
+        const data = await response.json();
         router.push(`/profile/${data.user_id}`);
       } else {
         // Handle error or show appropriate message
@@ -57,9 +57,9 @@ const BlogItem = ({ data, inProfile = false }) => {
         </h2>
       </Link>
       <p className="text-sm mb-2 dark:text-light truncate">{data.body}</p>
-      <span className="text-primary dark:text-primaryDark font-semibold">
+      {/* <span className="text-primary dark:text-primaryDark font-semibold">
         {data.user_id}
-      </span>
+      </span> */}
       {inProfile ? (
         <div className="w-full flex flex-row space-x-2">
           <Link
@@ -76,9 +76,7 @@ const BlogItem = ({ data, inProfile = false }) => {
             Delete
           </button>
         </div>
-      ) : (
-        null
-      )}
+      ) : null}
     </li>
   );
 };

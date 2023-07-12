@@ -56,7 +56,7 @@ const index = ({ data, dataComment, dataUser }) => {
                 lg:text-sm
                 sm:text-xs"
                 >
-                  {dataUser.name}aa
+                  {dataUser.name}
                 </p>
               </Link>
             </div>
