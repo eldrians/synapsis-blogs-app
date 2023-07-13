@@ -18,6 +18,7 @@ const profile = ({ data }) => {
               <Link
                 href={`/profile/form/createPost/${data.id}`}
                 className="py-2 px-4 bg-dark rounded-lg text-light font-base text-sm"
+                idUser={data.id}
               >
                 Make Post
               </Link>
@@ -73,4 +74,3 @@ export const getStaticProps = async (context) => {
     },
   };
 };
-

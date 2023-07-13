@@ -103,13 +103,21 @@ export default function Home() {
       </Head>
       <main className="w-full flex flex-col items-center justify-center overflow-hidden text-dark dark:text-light">
         <Layout className="pt-16 ">
-          <AnimatedText
-            text="Welcome !"
-            className="mb-16 text-8xl text-left 
+          <div className="w-full flex flex-row items-start justify-between">
+            <AnimatedText
+              text="Welcome !"
+              className="mb-16 text-8xl text-left 
             sm:mb-10 sm:text-5xl
             lg:mb-8 lg:text-7xl"
-            alt="image"
-          />
+              alt="image"
+            />
+            <Link
+              href={`/profile/form/createPost/1`}
+              className="text-8xl sm:text-5xl lg:text-7xl text-dark uppercase"
+            >
+              +
+            </Link>
+          </div>
 
           <Link
             href={`/detail/${posts.length >= 1 && posts[0].id}`}
@@ -146,7 +154,7 @@ export default function Home() {
                 }
               </p> */}
               <h3
-                className="text-7xl inline-block font-bold capitalize
+                className="text-2xl inline-block font-bold capitalize
               text-dark dark:text-light hover:underline hover:underline-offset-3
               sm:text-2xl
               lg:text-5xl"

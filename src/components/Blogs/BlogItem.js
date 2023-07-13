@@ -25,7 +25,7 @@ const BlogItem = ({ data, inProfile = false }) => {
 
       if (response.ok) {
         const data = await response.json();
-        router.push(`/profile/${data.user_id}`);
+        // router.push(`/profile/${data.user_id}`);
       } else {
         // Handle error or show appropriate message
       }

@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { PrevIcon } from "@/components/Icons";
+import { GetUsers } from "@/libs/usersAPI";
 
 const CreateBlog = () => {
+  const [users, setUsers] = useState([]);
   const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedPosts = await GetUsers();
+      setUsers(fetchedPosts);
+    };
+    fetchData();
+  }, []);
+
   const [formData, setFormData] = useState({
     title: "",
     user_id: "",
@@ -27,6 +39,8 @@ const CreateBlog = () => {
         body: formData.body,
       };
 
+      console.log(postData);
+
       const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
@@ -39,6 +53,7 @@ const CreateBlog = () => {
       });
       console.log(res);
       router.push(`/profile/${postData.user_id}`);
+      // router.push(`/`);
     } catch (error) {
       console.error(error);
       console.log("gagal");
@@ -48,7 +63,7 @@ const CreateBlog = () => {
   return (
     <>
       <AnimatedText
-        text="Create Your Own Blog!"
+        text={`${id == 1 ? "" : "hai,"} ${id==1?"":"1"}  Create Your Own Blog!"`}
         className="text-center text-6xl mt-16
       sm:text-2xl sm:mt-8
       lg:text-5xl lg:mt-12"
@@ -78,7 +93,9 @@ const CreateBlog = () => {
           >
             <div>
               <div className="mb-2">
-                <label className="text-xl text-dark dark:text-light font-semibold ml-1">Title</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">
+                  Title
+                </label>
               </div>
               <div className="w-full rounded-md bg-light border border-dark py-2 px-4">
                 <input
@@ -94,27 +111,40 @@ const CreateBlog = () => {
                 />
               </div>
             </div>
-            <div>
-              <div className="mb-2">
-                <label className="text-xl text-dark dark:text-light font-semibold ml-1">User</label>
+            <div className={`${id == 1 ? "" : "hidden"}`}>
+              <div className={`mb-2`}>
+                <label
+                  for="users"
+                  class="text-xl text-dark dark:text-light font-semibold ml-1"
+                >
+                  User
+                </label>
               </div>
-              <div className="w-full rounded-md bg-light border border-dark py-2 px-4">
-                <input
-                  className="h-full w-full outline-none text-md text-dark bg-light"
-                  type="number"
+              <div className={`w-full rounded-md`}>
+                <select
                   id="user_id"
-                  name="user_id"
-                  value={formData.user_id}
                   onChange={handleChange}
+                  name="user_id"
                   autoComplete="user_id"
                   required
-                  placeholder="insert your blogs User Id..."
-                />
+                  className="bg-light border border-dark text-dark text-sm rounded-lg focus:ring-dark focus:border-dark block w-full p-2.5 dark:bg-light dark:dark dark:placeholder-dark dark:text-dark"
+                >
+                  <option selected value={0}>
+                    Choose a user
+                  </option>
+                  {users.map((user) => (
+                    <option key={user.id} value={user.id}>
+                      {user.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
             <div>
               <div className="mb-2">
-                <label className="text-xl text-dark dark:text-light font-semibold ml-1">Body</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">
+                  Body
+                </label>
               </div>
               <div className="w-full rounded-md bg-light">
                 <textarea
