@@ -71,6 +71,7 @@ const UpdateBlog = () => {
         }
       );
       console.log(res);
+      router.back();
     } catch (error) {
       console.error(error);
       console.log("gagal");
@@ -107,7 +108,9 @@ const UpdateBlog = () => {
           >
             <div>
               <div className="mb-2">
-                <label className="text-xl text-dark dark:text-light font-semibold ml-1">Title</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">
+                  Title
+                </label>
               </div>
               <div className="w-full rounded-md bg-light border border-dark py-2 px-4">
                 <input
@@ -125,7 +128,9 @@ const UpdateBlog = () => {
             </div>
             <div>
               <div className="mb-2">
-                <label className="text-xl text-dark dark:text-light font-semibold ml-1">User</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">
+                  User
+                </label>
               </div>
               <div className="w-full rounded-md bg-light border border-dark py-2 px-4">
                 <input
@@ -143,7 +148,9 @@ const UpdateBlog = () => {
             </div>
             <div>
               <div className="mb-2">
-                <label className="text-xl text-dark dark:text-light font-semibold ml-1">Body</label>
+                <label className="text-xl text-dark dark:text-light font-semibold ml-1">
+                  Body
+                </label>
               </div>
               <div className="w-full rounded-md bg-light">
                 <textarea

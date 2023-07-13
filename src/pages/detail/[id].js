@@ -10,7 +10,7 @@ import { PrevIcon } from "@/components/Icons";
 import { GetCommentPost, GetPosts, GetPostsById } from "@/libs/postsAPI";
 
 const index = ({ data, dataComment, dataUser }) => {
-  console.log(dataComment)
+  console.log(dataComment);
   return (
     <div className="w-full flex justify-center items-center">
       <Layout
@@ -73,28 +73,7 @@ const index = ({ data, dataComment, dataUser }) => {
             className="w-full text-base text-dark/80 text-justify dark:text-light/80
             sm:text-xs"
           >
-            {data.body} Lorem ipsum dolor, sit amet consectetur adipisicing
-            elit. Quis, eaque libero! Natus a enim cumque sequi voluptas
-            adipisci ab voluptatibus ad voluptate consequuntur atque velit
-            labore nam saepe ducimus qui, asperiores esse porro ut magnam
-            voluptatem amet quis tempore? Rem excepturi ea odit natus ab officia
-            ex facere tempore? Corporis.
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
-              culpa sunt in facilis atque, laboriosam impedit beatae voluptatem
-              voluptate veniam ea ab! Est, corrupti expedita. Quam ut ullam,
-              dolor doloribus minus quia nobis nostrum officia modi nisi harum
-              veritatis ratione quo commodi debitis error illum rerum, voluptas
-              id placeat dolore.
-            </p>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
-              culpa sunt in facilis atque, laboriosam impedit beatae voluptatem
-              voluptate veniam ea ab! Est, corrupti expedita. Quam ut ullam,
-              dolor doloribus minus quia nobis nostrum officia modi nisi harum
-              veritatis ratione quo commodi debitis error illum rerum, voluptas
-              id placeat dolore.
-            </p>
+            {data.body}
           </div>
         </div>
         <div
@@ -109,13 +88,10 @@ const index = ({ data, dataComment, dataUser }) => {
             >
               Comments
             </h1>
-            
           </div>
-          {
-            dataComment.map((comment) => (
-              <DetailComment key={comment.id} data={comment} />
-            ))
-          }
+          {dataComment.map((comment) => (
+            <DetailComment key={comment.id} data={comment} />
+          ))}
           {dataComment != [] ? (
             dataComment.map((comment) => (
               <DetailComment key={comment.id} data={comment} />
@@ -184,4 +160,3 @@ export const getStaticProps = async (context) => {
     },
   };
 };
-

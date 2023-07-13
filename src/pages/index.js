@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import Head from "next/head";
 import BlogItem from "@/components/Blogs/BlogItem";
 import image1 from "/public/images/articles/example.jpg";
+import mainImage from "/public/images/articles/example-image.jpeg";
 import Image from "next/image";
 import { GetPosts } from "@/libs/postsAPI";
 import { GetUsersById } from "@/libs/usersAPI";
@@ -133,7 +134,7 @@ export default function Home() {
             lg:w-full"
             >
               <Image
-                src={image1}
+                src={mainImage}
                 className="w-full h-auto rounded-lg shadow-xl"
                 alt="image"
               />

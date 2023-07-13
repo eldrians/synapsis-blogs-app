@@ -52,8 +52,7 @@ const CreateBlog = () => {
         body: JSON.stringify(postData),
       });
       console.log(res);
-      router.push(`/profile/${id}`);
-      // router.push(`/`);
+      id == 1 ? router.push(`/`) : router.push(`/profile/${id}`);
     } catch (error) {
       console.error(error);
       console.log("gagal");
@@ -114,8 +113,8 @@ const CreateBlog = () => {
             <div>
               <div className={`mb-2`}>
                 <label
-                  for="users"
-                  class="text-xl text-dark dark:text-light font-semibold ml-1"
+                  htmlFor="users"
+                  className="text-xl text-dark dark:text-light font-semibold ml-1"
                 >
                   User
                 </label>
@@ -124,14 +123,13 @@ const CreateBlog = () => {
                 <select
                   id="user_id"
                   onChange={handleChange}
+                  value={formData.user_id}
                   name="user_id"
                   autoComplete="user_id"
                   required
                   className="bg-light border border-dark text-dark text-sm rounded-lg focus:ring-dark focus:border-dark block w-full p-2.5 dark:bg-light dark:dark dark:placeholder-dark dark:text-dark"
                 >
-                  <option selected value={id}>
-                    Choose a user
-                  </option>
+                  <option value={3614604}>Choose a user</option>
                   {users.map((user) => (
                     <option key={user.id} value={user.id}>
                       {user.name}

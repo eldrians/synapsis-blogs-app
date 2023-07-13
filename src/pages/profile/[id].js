@@ -8,7 +8,14 @@ const profile = ({ data }) => {
   return (
     <>
       <Layout>
+        <Link
+          href="/"
+          className="py-2 px-4 bg-dark dark:bg-light text-light dark:text-dark rounded-sm"
+        >
+          Go Home
+        </Link>
         <AboutUser data={data} />
+
         <div className="flex flex-col space-y-6 justify-center items-center my-12 border bg-dark/10 rounded-sm shadow py-16">
           <div className="w-5/6">
             <h1 className="text-start mt-4 mb-4 text-3xl font-semibold text-dark">
