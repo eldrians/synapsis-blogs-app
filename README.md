@@ -1,45 +1,62 @@
-# Next.Js Website Tutorial: Create a Stunning Portfolio Website with Nextjs, Tailwind CSS and Framer-motion🌟
+# Sysnapsis Blogs App
 
-![GitHub stars](https://img.shields.io/github/stars/codebucks27/Next.js-Developer-Portfolio-Starter-Code?style=social&logo=ApacheSpark&label=Stars)&nbsp;&nbsp;
-![GitHub forks](https://img.shields.io/github/forks/codebucks27/Next.js-Developer-Portfolio-Starter-Code?style=social&logo=KashFlow&maxAge=3600)&nbsp;&nbsp;
-![Github Followers](https://img.shields.io/github/followers/codebucks27.svg?style=social&label=Follow)&nbsp;&nbsp;<br />
+### Spesifikasi
 
-This repository contains starter code for Portfolio website created using NextJs. <br />
-
-For Demo and Final Code checkout following link👇: <br />
-[Nextjs Portfolio Website](https://devdreaming.com//videos/nextjs-tutorial-build-portfolio-tailwind-css-framer-motion) <br />
-
-If you want to learn how to create it please follow below tutorial👇: <br />
-https://youtu.be/Yw7yWHigGKI <br />
-[![YouTube Video Views](https://img.shields.io/youtube/views/Yw7yWHigGKI?style=social)](https://youtu.be/Yw7yWHigGKI)<br />
-
-<h3 align="left">▶ Support me via:</h3><br />
-<p><a href="https://www.buymeacoffee.com/CodeBucks" target="_blank"> <img  src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" height="50" width="210" alt="CodeBucks" ></img></a></p><br />
-
-### Images of The Portfolio Website:
-
-![Nextjs Portfolio Website](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/home-light-desktop.png)
-![Nextjs Portfolio Website Dark Mode](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/home-dark-desktop.png)
-![Next.js Portfolio Website](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/about-light-desktop.png)
-![Next js Portfolio Website](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/projects-dark-desktop.png)
-![Portfolio Website In Next.js](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/articles-light-desktop.png)
-![Responsive Portfolio Website In Nextjs](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/about-light-mobile.png)
-![Responsive Portfolio Website In Next js](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/projects-light-mobile.png)
-![Mobile Responsive Portfolio Website In Next.js](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/articles-light-mobile.png)
+all requirement done
+1. responsive
+2. darkmode
+3. using pagination
+4. good user interface
 
 
-### Resources Used in This Project
 
-- Profile image in the home page created by using https://www.midjourney.com/ tool.
-- Profile image in the about page by [Albert Dera](https://unsplash.com/@albertdera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 
-on [Unsplash](https://unsplash.com/photos/ILip77SbmOE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
-- Fonts from https://fonts.google.com/ <br />
-- Icons from https://iconify.design/ <br />
-- LightBulb Svg from https://lukaszadam.com/illustrations <br />
+## tampilan Aplikasi
 
-### External Libraries used in this project:
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/e10107d6-e3ee-4ada-a55f-b9de7bd0f148)
 
-- [framer-motion](https://www.framer.com/motion/) <br />
-- [Tailwind css](https://tailwindcss.com/) <br />
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/cd16c1ac-67c8-4005-a4f6-bcf81f54ecc4)
+   
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/58f56444-7b49-47b3-8f40-108212376b16)
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/7d7bb5e0-6788-43b7-816f-5c801fd990fd)
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/03bd4597-ad86-4124-b32f-28d246e05a8e)
+
+### tambah post (memilih email)
+1. Klik tombol tambah
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/8259bea0-844b-4646-b325-157fbdaa1c20)
+
+2. isi data post, lalu submit
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/7a44b5ab-2713-4d58-a8e5-2a33c432810b)
+
+3. data akan masuk langsung ke home
+
+### tambah post melalui user page
+
+1. masuk ke salah satu post, lalu kelik user akun (klik "axel")
+
+c
+
+2. tambah post
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/c881c7db-a245-461f-be88-91a1a604d7c0)
+
+3. masukkan data
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/638ced30-c4e6-43c7-a9c9-c17210ffb09c)
+
+## update
+
+1. masuk ke profile melalui (klik post, klik user)
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/4ebdd7b9-2e1b-4647-a07b-ee7f9b2cf379)
+
+2. klik tombol update, lalu masukkan data
+
+![image](https://github.com/eldrians/synapsis-blogs-app/assets/91566708/4225afc6-f5dd-4dad-a1ee-a2f77bc4b9d1)
+
+
 
 
