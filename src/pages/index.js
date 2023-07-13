@@ -113,7 +113,7 @@ export default function Home() {
             />
             <Link
               href={`/profile/form/createPost/1`}
-              className="text-8xl sm:text-5xl lg:text-7xl text-dark uppercase"
+              className="text-8xl sm:text-5xl lg:text-7xl text-dark dark:text-light uppercase"
             >
               +
             </Link>

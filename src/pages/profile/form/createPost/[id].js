@@ -21,7 +21,7 @@ const CreateBlog = () => {
 
   const [formData, setFormData] = useState({
     title: "",
-    user_id: "",
+    user_id: id == 1 ? "" : id,
     body: "",
   });
 
@@ -52,7 +52,7 @@ const CreateBlog = () => {
         body: JSON.stringify(postData),
       });
       console.log(res);
-      router.push(`/profile/${postData.user_id}`);
+      router.push(`/profile/${id}`);
       // router.push(`/`);
     } catch (error) {
       console.error(error);
@@ -63,7 +63,7 @@ const CreateBlog = () => {
   return (
     <>
       <AnimatedText
-        text={`${id == 1 ? "" : "hai,"} ${id==1?"":"1"}  Create Your Own Blog!"`}
+        text={`${id == 1 ? "" : "hai,"} ${id}  Create Your Own Blog!"`}
         className="text-center text-6xl mt-16
       sm:text-2xl sm:mt-8
       lg:text-5xl lg:mt-12"
@@ -111,7 +111,7 @@ const CreateBlog = () => {
                 />
               </div>
             </div>
-            <div className={`${id == 1 ? "" : "hidden"}`}>
+            <div>
               <div className={`mb-2`}>
                 <label
                   for="users"
@@ -129,7 +129,7 @@ const CreateBlog = () => {
                   required
                   className="bg-light border border-dark text-dark text-sm rounded-lg focus:ring-dark focus:border-dark block w-full p-2.5 dark:bg-light dark:dark dark:placeholder-dark dark:text-dark"
                 >
-                  <option selected value={0}>
+                  <option selected value={id}>
                     Choose a user
                   </option>
                   {users.map((user) => (

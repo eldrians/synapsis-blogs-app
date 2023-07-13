@@ -10,6 +10,7 @@ import { PrevIcon } from "@/components/Icons";
 import { GetCommentPost, GetPosts, GetPostsById } from "@/libs/postsAPI";
 
 const index = ({ data, dataComment, dataUser }) => {
+  console.log(dataComment)
   return (
     <div className="w-full flex justify-center items-center">
       <Layout
@@ -108,8 +109,14 @@ const index = ({ data, dataComment, dataUser }) => {
             >
               Comments
             </h1>
+            
           </div>
-          {dataComment == [] ? (
+          {
+            dataComment.map((comment) => (
+              <DetailComment key={comment.id} data={comment} />
+            ))
+          }
+          {dataComment != [] ? (
             dataComment.map((comment) => (
               <DetailComment key={comment.id} data={comment} />
             ))
