@@ -92,20 +92,6 @@ const index = ({ data, dataComment, dataUser }) => {
           {dataComment.map((comment) => (
             <DetailComment key={comment.id} data={comment} />
           ))}
-          {dataComment != [] ? (
-            dataComment.map((comment) => (
-              <DetailComment key={comment.id} data={comment} />
-            ))
-          ) : (
-            <div className="w-5/6">
-              <p
-                className="text-start text-dark/60  dark:text-light/60
-              sm:text-xs"
-              >
-                no comment here
-              </p>
-            </div>
-          )}
         </div>
       </Layout>
     </div>

@@ -24,7 +24,7 @@ const profile = ({ data }) => {
             <div className="my-6">
               <Link
                 href={`/profile/form/createPost/${data.id}`}
-                className="py-2 px-4 bg-dark rounded-lg text-light font-base text-sm"
+                className="py-2 px-4 bg-dark dark:bg-light dark:text-dark rounded-lg text-light font-base text-sm"
               >
                 Make Post
               </Link>
