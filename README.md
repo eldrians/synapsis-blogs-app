@@ -1,5 +1,9 @@
 # Sysnapsis Blogs App
+API
+https://gorest.co.in/
 
+app
+https://synapsis-blogs-app.vercel.app/
 ### Spesifikasi
 
 all requirement done
