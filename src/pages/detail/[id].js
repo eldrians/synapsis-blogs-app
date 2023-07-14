@@ -12,17 +12,14 @@ import { GetUsersById } from "@/libs/usersAPI";
 
 import { useRouter } from "next/router";
 
-const index = () => {
+const Index = ({ dataUser }) => {
   const [post, setPost] = useState([]);
   const [comment, setComment] = useState([]);
-  const [user, setUser] = useState([]);
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
     const fetchData = async () => {
-      const id = router.query.id;
-      const id2 = router.query.user_id;
       // get data post
       const fetchPost = await GetPostsById({ id });
       setPost(fetchPost);
@@ -30,14 +27,9 @@ const index = () => {
       //get data comment
       const fetchComment = await GetCommentPost({ id });
       setComment(fetchComment);
-
-      if (id2) {
-        const fetchUser = await GetUsersById(id2);
-        setUser(fetchUser);
-      }
     };
     fetchData();
-  }, [router.query.user_id]);
+  }, []);
   return (
     <div className="w-full flex justify-center items-center">
       <Layout
@@ -76,7 +68,7 @@ const index = () => {
             </div>
             <div className="flex justify-center items-center">
               <Link
-                href={`/profile/${user.id}`}
+                href={`/profile/${dataUser.id}`}
                 className="hover:underline-offset-2 hover:underline"
               >
                 <p
@@ -84,7 +76,7 @@ const index = () => {
                 lg:text-sm
                 sm:text-xs"
                 >
-                  {user.name}
+                  {dataUser.name}
                 </p>
               </Link>
             </div>
@@ -125,7 +117,7 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
 
 async function fetchPaths() {
   const fetchedPosts = await GetPosts();
