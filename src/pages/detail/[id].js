@@ -8,9 +8,36 @@ import DetailComment from "@/components/Details/DetailComment";
 import AnimatedText from "@/components/AnimatedText";
 import { PrevIcon } from "@/components/Icons";
 import { GetCommentPost, GetPosts, GetPostsById } from "@/libs/postsAPI";
+import { GetUsersById } from "@/libs/usersAPI";
 
-const index = ({ data, dataComment, dataUser }) => {
-  console.log(dataComment);
+import { useRouter } from "next/router";
+
+const index = () => {
+  const [post, setPost] = useState([]);
+  const [comment, setComment] = useState([]);
+  const [user, setUser] = useState([]);
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const id = router.query.id;
+      const id2 = router.query.user_id;
+      // get data post
+      const fetchPost = await GetPostsById({ id });
+      setPost(fetchPost);
+
+      //get data comment
+      const fetchComment = await GetCommentPost({ id });
+      setComment(fetchComment);
+
+      if (id2) {
+        const fetchUser = await GetUsersById(id2);
+        setUser(fetchUser);
+      }
+    };
+    fetchData();
+  }, [router.query.user_id]);
   return (
     <div className="w-full flex justify-center items-center">
       <Layout
@@ -28,7 +55,7 @@ const index = ({ data, dataComment, dataUser }) => {
         <div className="w-full flex flex-col justify-center items-center">
           <Image
             src={exampleImage}
-            alt={data.title}
+            alt="Image"
             className="w-full shadow-md shadow-dark dark:shadow-light dark:shadow-sm mb-12
             sm:mb-6
             lg:mb-10"
@@ -49,7 +76,7 @@ const index = ({ data, dataComment, dataUser }) => {
             </div>
             <div className="flex justify-center items-center">
               <Link
-                href={`/profile/${dataUser.id}`}
+                href={`/profile/${user.id}`}
                 className="hover:underline-offset-2 hover:underline"
               >
                 <p
@@ -57,13 +84,13 @@ const index = ({ data, dataComment, dataUser }) => {
                 lg:text-sm
                 sm:text-xs"
                 >
-                  {dataUser.name}
+                  {user.name}
                 </p>
               </Link>
             </div>
           </div>
           <AnimatedText
-            text={data.title}
+            text={post.title}
             className="mb-8 text-4xl text-left 
             sm:mb-4 sm:text-2xl
             lg:mb-6 lg:text-3xl"
@@ -73,7 +100,7 @@ const index = ({ data, dataComment, dataUser }) => {
             className="w-full text-base text-dark/80 text-justify dark:text-light/80
             sm:text-xs"
           >
-            {data.body}
+            {post.body}
           </div>
         </div>
         <div
@@ -89,7 +116,7 @@ const index = ({ data, dataComment, dataUser }) => {
               Comments
             </h1>
           </div>
-          {dataComment.map((comment) => (
+          {comment.map((comment) => (
             <DetailComment key={comment.id} data={comment} />
           ))}
         </div>
@@ -104,7 +131,10 @@ async function fetchPaths() {
   const fetchedPosts = await GetPosts();
   const paths = fetchedPosts.map((item) => {
     return {
-      params: { id: item.id.toString() },
+      params: {
+        id: item.id.toString(),
+        user_id: item.user_id.toString(),
+      },
     };
   });
   return paths;
@@ -124,7 +154,7 @@ export const getStaticProps = async (context) => {
   const data = await GetPostsById({ id });
   const dataComment = await GetCommentPost({ id });
 
-  console.log(data);
+  // console.log(data);
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,

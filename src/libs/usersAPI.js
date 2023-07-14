@@ -15,18 +15,19 @@ export const GetUsers = async () => {
   return await res.json();
 };
 
-export const GetUsersById = async ({ id }) => {
+export const GetUsersById = async (id2) => {
+  // console.log(id2);
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
   };
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/${id2}`, {
     method: "GET",
     headers: headers,
   });
 
   if (!res.ok) {
-    throw new Error("failed to fetch posts by id");
+    throw new Error("failed to fetch users by id");
   }
 
   return await res.json();

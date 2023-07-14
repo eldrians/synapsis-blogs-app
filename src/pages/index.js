@@ -121,7 +121,10 @@ export default function Home() {
           </div>
 
           <Link
-            href={`/detail/${posts.length >= 1 && posts[0].id}`}
+            // href={`/detail/${posts.length >= 1 && posts[0].id}`}
+            href={`/detail/${posts.length >= 1 && posts[0].id}?user_id=${
+              posts.length >= 1 && posts[0].user_id
+            }`}
             className="relative flex flex-row w-full h-auto mb-12 p-4 bg-light dark:bg-dark border border-solid border-dark dark:border-light rounded-2xl
             
             lg:flex-col"
